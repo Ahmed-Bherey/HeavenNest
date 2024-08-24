@@ -1,0 +1,29 @@
+.heading{
+    height: 35px;
+    line-height: 35px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.heading .heading_div{
+    width: 85%;
+    background-color: #6c757d;
+}
+.heading .icon{
+    width: 15%;
+    font-size: 20px;
+    background-color: #2c2b2e;
+}
+.header-bg {
+    background-color: #f47521;
+}
+.bg-green {
+    background-color: #2fa149;
+}
+
+.bg-success-2 {
+    background-color: #f47521;
+}
+.table-bordered thead td, .table-bordered thead th{
+    background-color: #f47521;
+    color: #ffffff;
+}
