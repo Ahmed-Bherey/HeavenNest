@@ -15,22 +15,13 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
-        // Validate the request
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-
-        // Attempt to authenticate the user
-        $credentials = $request->only('email', 'password');
-
-        if (auth()->guard('web')->attempt($credentials)) {
-            // Authentication successful
-            $userName = auth()->guard('web')->user()->name;
-            return redirect()->route('index')->with('success', "مرحبا $userName");
+        if (auth()->guard('web')->attempt([
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ])) {
+            return redirect()->route('dashboard.index')->with(['success' => 'مرحبا ' . Auth::user()->name]);
+        } else {
+            return redirect()->back()->with(['error' => 'هناك خطا بالبيانات']);
         }
-
-        // Authentication failed
-        return redirect()->back()->with('error', 'هناك خطأ بالبيانات');
     }
 }

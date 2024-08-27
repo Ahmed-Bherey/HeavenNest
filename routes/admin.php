@@ -9,10 +9,10 @@ use App\Http\Controllers\Admin\Auth\AdminAuthController;
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('login', [AdminAuthController::class, 'login']);
+    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login.form');
+    Route::post('login', [AdminAuthController::class, 'login'])->name('admin.login');
 
-    Route::middleware(['admin'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
         // country
         Route::prefix('country')->controller(CountryController::class)->name('country.')->group(function () {
