@@ -45,7 +45,7 @@
         </div>
 
         @foreach ($countries as $country)
-            <div id="{{ $country->id }}" class="tab-content active">
+            <div id="{{ $country->id }}" class="tab-content" style="display: none;">
                 @foreach ($country->real_estate as $realEstate)
                     <div class="property-card" data-aos="zoom-in" data-aos-duration="2000">
                         <a href="{{ route('user.real-estates.details', $realEstate->id) }}">
@@ -57,10 +57,16 @@
                         </a>
                     </div>
                 @endforeach
+                <!-- الزر يجب أن يكون داخل الـ tab-content لكي يظهر أسفل العقارات -->
+                <div class="text-center mt-3">
+                    <a href="{{ route('user.country.real-estates', $country->id) }}" class="realestate-btn">عرض المزيد من
+                        العقارات في {{ $country->name }}</a>
+                </div>
             </div>
-            <a href="{{ route('user.real-estates') }}" class="realestate-btn">للمزيد اضغط هنا</a>
         @endforeach
     </div>
+
+
 
     <!-- Section: Our Properties -->
     <section class="our-properties">

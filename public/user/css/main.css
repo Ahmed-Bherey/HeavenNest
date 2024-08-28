@@ -151,13 +151,19 @@ nav a {
 }
 
 .property-card {
-    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 1px 8px 0px grey;
     overflow: hidden;
     width: 30%;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .property-card a {
@@ -170,6 +176,7 @@ nav a {
     height: 200px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .property-card h3 {
@@ -270,6 +277,7 @@ footer .footer-content .footer-section .social-media a .social-icon {
 
 .tab-content {
     display: none;
+    padding: 10px;
 }
 
 .tab-content.active {
@@ -366,4 +374,53 @@ footer .footer-content .footer-section .social-media a .social-icon {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.pagination .page-item {
+    border: 1px solid;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .7s ease-in-out;
+    -webkit-transition: .7s ease-in-out;
+    -moz-transition: .7s ease-in-out;
+    -ms-transition: .7s ease-in-out;
+    -o-transition: .7s ease-in-out;
+}
+.pagination .page-item a{
+    color: #333;
+    transition: .7s ease-in-out;
+    -webkit-transition: .7s ease-in-out;
+    -moz-transition: .7s ease-in-out;
+    -ms-transition: .7s ease-in-out;
+    -o-transition: .7s ease-in-out;
+}
+.pagination .page-item a:hover{
+    color: #fff;
+}
+.pagination .page-item:hover {
+    background-color: #76a7d1;
+}
+
+.tab-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px; /* للتحكم في المسافة بين التبويبات والعقارات */
+}
+
+
+
+.realestate-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
 }

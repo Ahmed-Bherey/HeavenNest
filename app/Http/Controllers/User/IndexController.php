@@ -11,10 +11,14 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $countries = Country::with(['real_estate' => function($query) {
+        // جلب البلدان مع أحدث 6 عقارات لكل بلد
+        $countries = Country::with(['real_estate' => function ($query) {
             $query->take(6);
         }])->get();
+
+        // جلب العقارات مع دعم الترقيم
         $realEstates = RealEstate::paginate(6);
+
         return view('user.pages.index', compact('countries', 'realEstates'));
     }
 
@@ -54,7 +58,7 @@ class IndexController extends Controller
     public function realEstates()
     {
         $countries = Country::with('real_estate')->get();
-        $realEstates = RealEstate::get();
+        $realEstates = RealEstate::paginate(3);
         return view('user.pages.realEstates', compact('countries', 'realEstates'));
     }
 
@@ -64,5 +68,16 @@ class IndexController extends Controller
         $countryRealEstates = RealEstate::where('country_id', $realEstate->country_id)
             ->take(3)->inRandomOrder()->get();
         return view('user.pages.realEstate_details', compact('realEstate', 'countryRealEstates'));
+    }
+
+    public function showCountryRealEstates($id)
+    {
+        // تحقق من وجود البلد
+        $country = Country::findOrFail($id);
+
+        // الحصول على جميع العقارات المرتبطة بهذا البلد مع التصفح
+        $realEstates = $country->real_estate()->paginate(10);
+
+        return view('user.pages.showCountryRealEstates', compact('country', 'realEstates'));
     }
 }

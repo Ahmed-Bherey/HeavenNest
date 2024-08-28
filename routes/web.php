@@ -24,6 +24,7 @@ Route::post('register', [LoginController::class, 'register'])->name('user.regist
 Route::middleware('clientChech')->group(function () {
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('real-estates', [IndexController::class, 'realEstates'])->name('user.real-estates');
+Route::get('/country/{id}/real-estates', [IndexController::class, 'showCountryRealEstates'])->name('user.country.real-estates');
 Route::get('realestatesByCountry/{country_id}', [IndexController::class, 'realestatesByCountry'])->name('user.realestates.by.country');
 Route::get('real-estates/details/{realEstate_id}', [IndexController::class, 'realEstateDetails'])->name('user.real-estates.details');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
